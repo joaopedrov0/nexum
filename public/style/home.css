@@ -1,0 +1,94 @@
+menu{
+    width: 20vw;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    background-color: #d81b60;
+    align-items: center;
+    justify-content: space-between;
+}
+menu > *{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+menu .actions a{
+    display: flex;
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 90%;
+    height: 50px;
+    background-color: #a90f56;
+    margin: 5px 0;
+    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+    color: rgb(235, 235, 235);
+    text-decoration: none;
+
+    transition: all 200ms ease-in-out;
+}
+menu .actions a:hover{
+    opacity: 85%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.user-data{
+    margin-top: 25px;
+}
+.actions{
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.posts{
+    overflow-y: scroll;
+}
+
+.post{
+    margin: 5px;
+    padding: 25px;
+    width: 99%;
+    border-radius: 5px;
+    background-color: #f50057;
+}
+.whospost{
+    display: flex;
+    flex-direction: row;
+}
+
+.whospost .name{
+    margin-right: 20px;
+}
+.whospost .email{
+    font-size: 30px;
+    opacity: 50%;
+}
+.name{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 32px;
+}
+
+.email{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.content{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+    overflow-wrap: break-word;
+}
+
+menu .name{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 3px;
+    font-weight: 200;
+    color: rgb(235, 235, 235);
+}
+
+menu .email{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 200;
+    color: rgba(235, 235, 235, 0.925);
+}

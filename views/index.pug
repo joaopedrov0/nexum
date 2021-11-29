@@ -1,0 +1,29 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Nexum - Home
+        link(rel="stylesheet", href="style/home.css")
+        link(rel="stylesheet", href="style/base.css")
+    body 
+        header 
+            h1 Nexum
+        div(class="wrap")
+            section(class="posts") 
+                each val in posts
+                    div(class="post")
+                        div(class="whospost")
+                            p(class="name")= val.name
+                            p(class="email")= val.email 
+                        hr
+                        p(class="content")= val.contentText
+            menu 
+                div(class="user-data")
+                    h2(class="name")= user.name
+                    h5(class="email")= user.email
+                div(class="actions")
+                    hr
+                    a(href="/post") Criar um novo post
+                    a(href="/cadastro") Fazer um novo Cadastro 

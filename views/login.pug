@@ -1,0 +1,22 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Login
+        link(rel="stylesheet", href="style/base.css")
+        link(rel="stylesheet", href="style/form.css")
+    body 
+        header 
+            h1 Nexum
+        div(class="wrap")
+            img(src="images/form.jpg", alt="background")
+            section(class="full-section")
+                form(action="/connect", method="post")
+                    h2 Login
+                    input(type="email", name="email", placeholder="Email de usuário" required)
+                    input(type="password", name="password", placeholder="Senha" required)
+                    button(type="submit") Login
+
+                a(href="/cadastro") Não tem uma conta? Cadastre-se aqui! 
