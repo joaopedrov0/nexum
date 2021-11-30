@@ -7,6 +7,7 @@ html(lang="pt-br")
         title Nexum - Home
         link(rel="stylesheet", href="style/home.css")
         link(rel="stylesheet", href="style/base.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
     body 
         header 
             h1 Nexum
@@ -17,6 +18,8 @@ html(lang="pt-br")
                         div(class="whospost")
                             p(class="name")= val.name
                             p(class="email")= val.email 
+                            if sessionID == val.creatorID 
+                                a(href="/deletePost/" + val.id, class="material-icons-outlined delete") delete
                         hr
                         p(class="content")= val.contentText
             menu 
@@ -27,3 +30,5 @@ html(lang="pt-br")
                     hr
                     a(href="/post") Criar um novo post
                     a(href="/cadastro") Fazer um novo Cadastro 
+                    a(href="/login") Fazer um novo Login 
+                    a(href="/deleteLogin") Deletar conta 

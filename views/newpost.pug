@@ -7,6 +7,7 @@ html(lang="pt-br")
         title Creating a new post - Nexum
         link(rel="stylesheet", href="style/base.css")
         link(rel="stylesheet", href="style/newpost.css")
+        link(rel="stylesheet", href="/style/btn.css")
     body 
         header 
             h1 Nexum
@@ -15,4 +16,4 @@ html(lang="pt-br")
                 h2 Write a new post!
                 form(action="/add", method="post") 
                     textarea(name="content", cols="30", rows="10" placeholder="Write a new post here!")
-                    button(type="submit") Criar post
+                    button(type="submit" class="btn-glass") Criar post

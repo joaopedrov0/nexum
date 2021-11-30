@@ -16,21 +16,22 @@ const cookieParser = require('cookie-parser')
         app.set('view engine', 'pug')
 // Rotas
     app.get('/', (req, res) => {
-        if(typeof req.cookies.session == ''){res.redirect('login')}
-        
-        console.log(req.cookies.session)
-        if(db.Logins.findOne({where: {id: req.cookies.session}})){
-            db.Posts.findAll({order: [['id', 'DESC']]}).then((posts) => {
-                console.log('POSTS: ' + posts)
-                
-                db.Logins.findOne({where: {
-                    id: req.cookies.session
-                }}).then(user => {res.render('index', {posts, user})})
-            })
+        if(req.cookies.session == undefined){
+            res.redirect('login')
         } else {
-            res.render('login')
+            console.log(req.cookies.session)
+            if(db.Logins.findOne({where: {id: req.cookies.session}})){
+                db.Posts.findAll({order: [['id', 'DESC']]}).then((posts) => {
+                    console.log('POSTS: ' + posts)
+                    
+                    db.Logins.findOne({where: {
+                        id: req.cookies.session
+                    }}).then(user => {res.render('index', {posts, user, sessionID: req.cookies.session})})
+                })
+            } else {
+                res.render('login')
+            }
         }
-        
     })
 
     app.get('/cadastro', (req, res) => {
@@ -42,25 +43,27 @@ const cookieParser = require('cookie-parser')
     })
 
     app.post('/connect', (req, res) => {
-        let login = db.Logins.findOne({where: {
+        db.Logins.findOne({where: {
             email: req.body.email,
             password: req.body.password
-        }})
+        }}).then(user => {
+            if(user != null) {
+                let id
+                res.clearCookie('session')
+                db.Logins.findOne({where: {email: req.body.email}}).then(user => {
+                    console.log(user.id)
+                    id = user.id
+                    res.cookie('session', id)
+                    console.log('Cookie created: ' + id)
+                    res.redirect('/')
+                })
+                
+            } else {
+                res.render('login')
+            }
+        })
 
-        if(login != null) {
-            let id
-            res.clearCookie('session')
-            db.Logins.findOne({where: {email: req.body.email}}).then(user => {
-                console.log(user.id)
-                id = user.id
-                res.cookie('session', id)
-                console.log('Cookie created: ' + id)
-                res.redirect('/')
-            })
-            
-        } else {
-            res.render('login')
-        }
+        
     })
 
     app.post('/createAccount', (req, res) => {
@@ -70,11 +73,11 @@ const cookieParser = require('cookie-parser')
             if(x === null){
                 exists = false
                 console.log('EXISTS === FALSE')
-                res.render('cadastro-sucesso')
+                res.render('sucesso')
             } else {
                 exists = true
                 console.log('EXISTS === TRUE')
-                res.redirect('cadastro')
+                res.render('cadastro-falha')
             }
         })
         
@@ -92,6 +95,25 @@ const cookieParser = require('cookie-parser')
         })
 
         
+    })
+
+    app.get('/deleteLogin', (req, res) => {
+        res.render('deleteAccount')
+    })
+
+    app.post('/deleteLoginConfirm', (req, res) => {
+        db.Logins.findOne({where:{
+            id: req.cookies.session
+        }}).then(user => {
+            if(user.password === req.body.password){
+                db.Logins.destroy({where: {
+                    id: req.cookies.session
+                }})
+                res.render('sucesso')
+            } else {
+                res.render('deleteAccount')
+            }
+        })
     })
 
     // Post routes
@@ -117,6 +139,18 @@ const cookieParser = require('cookie-parser')
                 creatorID: sessionID
             })
             res.redirect('/')
+        })
+    })
+
+    app.get('/deletePost/:id', (req, res) => {
+        db.Posts.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(() => {
+            res.redirect('/')
+        }).catch(err => {
+            res.send('Ocorreu um erro' + err)
         })
     })
 

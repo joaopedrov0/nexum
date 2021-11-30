@@ -12,6 +12,10 @@ font-family: 'Source Sans Pro', sans-serif;
 */
 
 /*styles*/
+::-webkit-scrollbar{
+    display: none;
+}
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -41,7 +45,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: /*#880e4f #4a148c*/ #921742;
+    background-color: /*#880e4f #4a148c*/ #5c0322;
 }
 h1{
     font-family: 'Raleway', sans-serif;
@@ -58,10 +62,23 @@ section{
     flex-direction: column;
     overflow-y: auto;
     padding: 15px;
-    background-color: #9C1C49;
+    background-color: #212121;
 }
 
 hr{
-    border: 1px solid #9C1C49;
+    border: 1px solid #7e0d41;
     margin: 10px 0;
+}
+menu hr{
+    width: 90%;
+}
+
+.material-icons-outlined{
+    font-family: 'Material Icons';
+    font-size: 32px;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

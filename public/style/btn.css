@@ -1,0 +1,26 @@
+.btn-glass{
+    padding: 20px;
+    margin: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 1px 1px 5px rgba(211, 211, 211, 0.576);
+    background-color: rgba(191, 191, 191, 0.172);
+
+    border: none;
+
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(235, 235, 235);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+
+    transition: all 200ms ease-in-out;
+
+    text-decoration: none;
+    
+}
+
+.btn-glass:hover{
+    background-color: rgba(163, 10, 56, 0.652);
+    border-radius: 10px;
+    cursor: pointer;
+}

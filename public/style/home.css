@@ -3,7 +3,7 @@ menu{
     height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
-    background-color: #d81b60;
+    background-color: #5a0c28;
     align-items: center;
     justify-content: space-between;
 }
@@ -18,7 +18,7 @@ menu .actions a{
     font-family: 'Source Sans Pro', sans-serif;
     width: 90%;
     height: 50px;
-    background-color: #a90f56;
+    background-color: #7e0d41;
     margin: 5px 0;
     border-radius: 2px;
     align-items: center;
@@ -50,11 +50,18 @@ menu .actions a:hover{
     padding: 25px;
     width: 99%;
     border-radius: 5px;
-    background-color: #f50057;
+    background-color: #131313;
+    color: white;
 }
+
+.posts hr{
+    border-color: #212121;
+}
+
 .whospost{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .whospost .name{
@@ -91,4 +98,18 @@ menu .email{
     letter-spacing: 1px;
     font-weight: 200;
     color: rgba(235, 235, 235, 0.925);
+}
+
+.delete{
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 5px;
+    color: rgba(208, 208, 208, 0.563);
+
+    transition: all 200ms ease-in-out;
+}
+
+.delete:hover{
+    color: white;
+    /*background-color: rgba(255, 255, 255, 0.439);*/
 }
