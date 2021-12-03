@@ -155,7 +155,7 @@ const cookieParser = require('cookie-parser')
     })
 
 
-app.listen(3000, console.log('The server is running! (Nexum) '))
+app.listen(process.env.PORT || 3000, console.log('The server is running! (Nexum) '))
 
 //dependences
 
