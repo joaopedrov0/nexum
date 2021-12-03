@@ -1,0 +1,31 @@
+{
+  "name": "nexum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express-handlebars": "^5.3.4",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "express": "^4.17.1",
+    "sequelize": "^6.12.0-alpha.1",
+    "cookie-parser": "^1.4.6",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaopedrov0/nexum.git"
+  },
+  "author": "joaopedrov0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaopedrov0/nexum/issues"
+  },
+  "homepage": "https://github.com/joaopedrov0/nexum#readme"
+}
