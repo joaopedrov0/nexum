@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
-const sequelize = new Sequelize('nexum', 'root', '4nf1tr14o', {
-    host: 'localhost',
+const sequelize = new Sequelize('nexumapp', 'nexumuser', 'nexumpass', {
+    host: 'db4free.net',
     dialect: 'mysql',
 })
 
