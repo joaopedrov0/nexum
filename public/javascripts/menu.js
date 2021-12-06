@@ -8,5 +8,9 @@ const toggleMenu = () => {
 const hamburguer = document.querySelector('.hamburguer')
 
 const toggleHamburguer = () => {
-    hamburguer.classList.toggle('close')
+    if(menu.classList.contains('open')){
+        hamburguer.innerHTML = 'close'
+    } else {
+        hamburguer.innerHTML = 'menu'
+    }
 }

@@ -112,6 +112,7 @@ const cookieParser = require('cookie-parser')
                 db.Logins.destroy({where: {
                     id: req.cookies.session
                 }})
+                res.clearCookie('session')
                 res.render('sucesso')
             } else {
                 res.redirect('deleteAccount')

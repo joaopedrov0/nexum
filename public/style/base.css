@@ -24,8 +24,6 @@ font-family: 'Source Sans Pro', sans-serif;
 html{
     padding: 0;
     margin: 0;
-    width: 100vw;
-    height: 100vh;
 }
 body{
     padding: 0;
@@ -87,10 +85,4 @@ menu hr{
 
 .hide-on-large{
     display: none;
-}
-
-@media screen and (max-width: 960px){
-    .hide-on-large{
-        display: flex;
-    }
 }
