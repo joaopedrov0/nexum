@@ -158,6 +158,31 @@ const cookieParser = require('cookie-parser')
         })
     })
 
+    app.get('/changePassword', (req, res) => {
+        res.render('changePassword')
+    })
+
+    app.post('/changePasswordIdentityCheck', (req, res) => {
+        db.Logins.findOne({where: {
+            id: req.cookies.session,
+        }}).then(user => {
+            console.log('USER= ', user)
+            console.log('BODY= ', req.body)
+            console.log('CURRENT PASSWORD= ', user.password)
+            if(user.password == req.body.password){
+                db.Logins.update({password: req.body.newPassword}, {
+                    where: {id: req.cookies.session}
+                }).then(() => {
+                    res.render('sucesso')
+                })
+            } else {
+                res.render('changePassword', {erro: 'Senha incorreta'})
+            }
+        }).catch((err) => {
+            console.log('Ocorreu um erro! ', err)
+        })
+    })
+
 
 app.listen(process.env.PORT || 3000, console.log('The server is running! (Nexum) '))
 
