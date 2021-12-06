@@ -106,12 +106,15 @@ const cookieParser = require('cookie-parser')
             id: req.cookies.session
         }}).then(user => {
             if(user.password === req.body.password){
+                db.Posts.destroy({where: {
+                    creatorID: req.cookies.session
+                }})
                 db.Logins.destroy({where: {
                     id: req.cookies.session
                 }})
                 res.render('sucesso')
             } else {
-                res.render('deleteAccount')
+                res.redirect('deleteAccount')
             }
         })
     })

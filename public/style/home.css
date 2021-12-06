@@ -121,6 +121,7 @@ menu .email{
 .post .post-date{
     opacity: 50%;
     font-size: 11px;
+    font-family: 'Raleway', sans-serif;
 }
 
 @media screen and (max-width: 960px){
