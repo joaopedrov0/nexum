@@ -113,3 +113,55 @@ menu .email{
     color: white;
     /*background-color: rgba(255, 255, 255, 0.439);*/
 }
+
+.whospost .email, .whospost .nome{
+    overflow-x: auto;
+}
+
+.post .post-date{
+    opacity: 50%;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 960px){
+    .posts{
+        width: 100vw;
+    }
+    menu{
+        position: fixed;
+        width: 80vw;
+        transform: translateX(-100%);
+
+        transition: transform 200ms ease-in-out;
+    }
+
+    menu.open{
+        transform: translateX(0);
+    }
+
+    .hamburguer{
+        display: flex;
+        position: fixed;
+        right: 15px;
+        align-self: center;
+        color: white;
+        padding: 10px;
+        font-size: 30px;
+        border-radius: 3px;
+
+        content: 'menu';
+    }
+
+    .hamburguer::selection{
+        background-color: transparent;
+    }
+
+    .hamburguer.close{
+        content: 'close';
+    }
+
+    .hamburguer:hover{
+        background-color: rgba(255, 255, 255, 0.179);
+        cursor: pointer;
+    }
+}

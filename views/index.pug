@@ -5,12 +5,13 @@ html(lang="pt-br")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Nexum - Home
-        link(rel="stylesheet", href="style/home.css")
         link(rel="stylesheet", href="style/base.css")
         link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        link(rel="stylesheet", href="style/home.css")
     body 
         header 
             h1 Nexum
+            div(class="material-icons-outlined hamburguer hide-on-large", onclick="toggleMenu()") menu
         div(class="wrap")
             section(class="posts") 
                 each val in posts
@@ -22,6 +23,7 @@ html(lang="pt-br")
                                 a(href="/deletePost/" + val.id, class="material-icons-outlined delete") delete
                         hr
                         p(class="content")= val.contentText
+                        small(class="post-date")= val.createdAt
             menu 
                 div(class="user-data")
                     h2(class="name")= user.name
@@ -32,3 +34,4 @@ html(lang="pt-br")
                     a(href="/cadastro") Fazer um novo Cadastro 
                     a(href="/login") Fazer um novo Login 
                     a(href="/deleteLogin") Deletar conta 
+    script(src="javascripts/menu.js") 
