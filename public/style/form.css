@@ -1,7 +1,9 @@
 .wrap img{
-    width: 100vw;
+    width: auto;
+    min-width: 100vw;
     height: 100vh;
     position: fixed;
+    align-self: center;
     top: 0;
     left: 0;
     z-index: -5;
@@ -21,7 +23,7 @@ h2{
 }
 
 .success, form{
-    width: clamp(360px, 50%, 90%);
+    width: clamp(340px, 50%, 90%);
     background-color: rgba(191, 191, 191, 0.172);
     backdrop-filter: blur(10px);
     padding: 30px;
@@ -78,4 +80,25 @@ input::placeholder{
     background-color: rgba(163, 10, 56, 0.652);
     border-radius: 10px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 960px){
+    section{
+        overflow-x: hidden;
+    }
+
+    .wrap img{
+        /*transform: translateX(-50%);*/
+        min-height: 100vw;
+        max-height: 1000px;
+    }
+
+    input{
+        width: 95%;
+        margin-bottom: 25px;
+    }
+
+    button{
+        width: 95%;
+    }
 }

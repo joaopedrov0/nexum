@@ -113,3 +113,20 @@ menu hr{
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.213);
 }
+
+@media screen and (max-width: 960px){
+
+    h1{
+        font-size: 32px;
+        font-weight: 200;
+    }
+
+    header{
+        height: 70px;
+        align-items: center;
+    }
+
+    section, body .wrap menu{
+        height: calc(100vh - 70px);
+    }
+}

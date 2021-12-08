@@ -122,6 +122,7 @@ const cookieParser = require('cookie-parser')
 
     // Post routes
     app.get('/post', (req, res) => {
+        //db.Logins.findAll().then(x => console.log(x)) isso exibe as senhas no console (FUNCIONALIDADE DE DESENVOLVIMENTO)
         res.render('newpost')
     })
 

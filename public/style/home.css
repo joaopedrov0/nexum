@@ -165,4 +165,31 @@ menu .email{
         background-color: rgba(255, 255, 255, 0.179);
         cursor: pointer;
     }
+
+    /*fonts-sizing*/
+    .content{
+        font-size: 18px;
+    }
+
+    .whospost{
+        height: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .whospost .name, .whospost .email{
+        font-size: 20px;
+    }
+
+    .post-date{
+        font-size: 9px;
+    }
+
+    .posts{
+        overflow-x: hidden;
+    }
+
+    .delete{
+        font-size: 24px;
+    }
 }
