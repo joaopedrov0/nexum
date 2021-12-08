@@ -98,6 +98,7 @@ const cookieParser = require('cookie-parser')
     })
 
     app.get('/deleteLogin', (req, res) => {
+        if(req.cookies.session == undefined){res.redirect('login')}
         res.render('deleteAccount')
     })
 
@@ -122,6 +123,7 @@ const cookieParser = require('cookie-parser')
 
     // Post routes
     app.get('/post', (req, res) => {
+        if(req.cookies.session == undefined){res.redirect('login')}
         //db.Logins.findAll().then(x => console.log(x)) isso exibe as senhas no console (FUNCIONALIDADE DE DESENVOLVIMENTO)
         res.render('newpost')
     })
@@ -148,15 +150,19 @@ const cookieParser = require('cookie-parser')
     })
 
     app.get('/deletePost/:id', (req, res) => {
-        db.Posts.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(() => {
+        db.Posts.findOne({where:{id: req.params.id}}).then((post) => {if(post.creatorID == req.cookies.session){
+            db.Posts.destroy({
+                where: {
+                    id: req.params.id
+                }
+            }).then(() => {
+                res.redirect('/')
+            }).catch(err => {
+                res.send('Ocorreu um erro' + err)
+            })
+        } else {
             res.redirect('/')
-        }).catch(err => {
-            res.send('Ocorreu um erro' + err)
-        })
+        }})
     })
 
     app.get('/changePassword', (req, res) => {
