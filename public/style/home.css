@@ -35,6 +35,7 @@ menu .actions a:hover{
 }
 .user-data{
     margin-top: 25px;
+    max-width: 95%;
 }
 .actions{
     margin-bottom: 25px;
@@ -91,6 +92,8 @@ menu .name{
     letter-spacing: 3px;
     font-weight: 200;
     color: rgb(235, 235, 235);
+    overflow-x: auto;
+    max-width: 100%;
 }
 
 menu .email{
@@ -98,6 +101,8 @@ menu .email{
     letter-spacing: 1px;
     font-weight: 200;
     color: rgba(235, 235, 235, 0.925);
+    overflow-x: auto;
+    max-width: 100%;
 }
 
 .delete{
