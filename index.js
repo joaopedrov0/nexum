@@ -190,6 +190,30 @@ const cookieParser = require('cookie-parser')
         })
     })
 
+    // Profiles
+    let profileToAcess
+    app.get('/accessProfile/:id', (req, res) => {
+        db.Logins.findOne({where: {
+            id: req.params.id
+        }}).then(user => {
+            db.Posts.findAll({
+                where: {
+                    creatorID: user.id
+                },
+                order: [['id', 'DESC']]
+            }).then(posts => {
+                profileToAcess = {user, posts}
+                res.redirect('/profile')
+            }).catch((err) => {
+                console.log('=================ERROR: ' + err)
+            })
+        })
+    })
+
+    app.get('/profile', (req, res) => {
+        res.render('profile', profileToAcess)
+    })
+
 
 app.listen(process.env.PORT || 3000, console.log('The server is running! (Nexum) '))
 

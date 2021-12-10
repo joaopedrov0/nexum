@@ -18,8 +18,8 @@ html(lang="pt-br")
                 each val in posts
                     div(class="post")
                         div(class="whospost")
-                            p(class="name")= val.name
-                            p(class="email")= val.email 
+                            a(class="name", href="/accessProfile/" + val.creatorID)= val.name
+                            a(class="email", href="/accessProfile/" + val.creatorID)= val.email 
                             if sessionID == val.creatorID 
                                 a(href="/deletePost/" + val.id, class="material-icons-outlined delete") delete
                         hr

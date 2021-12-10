@@ -1,0 +1,19 @@
+section{
+    width: 100vw;
+}
+
+h2, h3{
+    color: white;
+    font-weight: 300;
+}
+
+.post{
+    max-width: 95vw;
+}
+
+.posts{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

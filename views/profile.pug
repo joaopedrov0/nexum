@@ -1,0 +1,30 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= user.name + ' profile - Nexum'
+        link(rel="stylesheet", href="style/base.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        link(rel="stylesheet", href="style/home.css")
+
+        link(rel="stylesheet", href="style/profile.css")
+    body 
+        a(class="floating-btn" href="/") arrow_back
+        header 
+                h1 Nexum
+        section 
+                h2(class="name")= user.name
+                h3(class="email")= user.email
+                div(class="posts")
+                    each val in posts
+                        div(class="post")
+                            div(class="whospost")
+                                p(class="name")= val.name
+                                p(class="email")= val.email 
+                                if sessionID == val.creatorID 
+                                    a(href="/deletePost/" + val.id, class="material-icons-outlined delete") delete
+                            hr
+                            p(class="content")= val.contentText
+                            small(class="post-date")= val.createdAt
