@@ -8,6 +8,12 @@ html(lang="pt-br")
         link(rel="stylesheet", href="style/base.css")
         link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
         link(rel="stylesheet", href="style/home.css")
+
+        //favicon
+        link(rel="apple-touch-icon", sizes="180x180", href="favicon/apple-touch-icon.png")
+        link(rel="icon", type="image/png", sizes="32x32", href="favicon/favicon-32x32.png")
+        link(rel="icon", type="image/png", sizes="16x16", href="favicon/favicon-16x16.png")
+        link(rel="manifest", href="favicon/nexum.webmanifest")
     body 
         a(class="floating-btn" href="/") refresh
         header 
@@ -19,7 +25,7 @@ html(lang="pt-br")
                     div(class="post")
                         div(class="whospost")
                             a(class="name", href="/accessProfile/" + val.creatorID)= val.name
-                            a(class="email", href="/accessProfile/" + val.creatorID)= val.email 
+                            a(class="userName", href="/accessProfile/" + val.creatorID)= '@' + val.userName 
                             if sessionID == val.creatorID 
                                 a(href="/deletePost/" + val.id, class="material-icons-outlined delete") delete
                         hr
@@ -27,8 +33,10 @@ html(lang="pt-br")
                         small(class="post-date")= val.createdAt
             menu 
                 div(class="user-data")
-                    h2(class="name")= user.name
-                    h5(class="email")= user.email
+                    h2(class="name")
+                        a(class="name", href="/accessProfile/" + user.id)= user.name
+                    h5(class="userName")
+                        a(class="userName", href="/accessProfile/" + user.id)= '@' + user.userName
                 div(class="actions")
                     hr
                     a(href="/post") Criar um novo post

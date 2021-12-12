@@ -4,11 +4,10 @@ html(lang="pt-br")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Creating a new post - Nexum
-        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        title Editar nome
         link(rel="stylesheet", href="style/base.css")
-        link(rel="stylesheet", href="style/newpost.css")
-        link(rel="stylesheet", href="/style/btn.css")
+        link(rel="stylesheet", href="style/form.css")
+        link(rel="stylesheet", href="style/btn.css")
 
         //favicon
         link(rel="apple-touch-icon", sizes="180x180", href="favicon/apple-touch-icon.png")
@@ -16,12 +15,12 @@ html(lang="pt-br")
         link(rel="icon", type="image/png", sizes="16x16", href="favicon/favicon-16x16.png")
         link(rel="manifest", href="favicon/nexum.webmanifest")
     body 
-        div(class="floating-btn" onclick="history.back()") arrow_back
         header 
             h1 Nexum
         div(class="wrap")
+            img(src="images/form.jpg", alt="background")
             section(class="full-section")
-                h2 Write a new post!
-                form(action="/add", method="post") 
-                    textarea(name="content", cols="30", rows="10" placeholder="Write a new post here!")
-                    button(type="submit" class="btn-glass") Criar post
+                form(action="/changeName", method="post")
+                    h2 Editar nome
+                    input(type="text", name="name", placeholder="Nome" required)
+                    button(type="submit") Confirmar

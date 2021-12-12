@@ -4,6 +4,11 @@ const pug = require('pug')
 const db = require('./models/db')
 const cookieParser = require('cookie-parser')
 
+// Testing scripts
+db.Logins.findAll().then(logins => {console.log(logins)})
+db.Posts.findAll().then(posts => {console.log(posts)})
+
+
 // Config
     // Setting the public files (CSS, images and JavaScripts)
         app.use(express.static('public'))
@@ -44,13 +49,13 @@ const cookieParser = require('cookie-parser')
 
     app.post('/connect', (req, res) => {
         db.Logins.findOne({where: {
-            email: req.body.email,
+            userName: req.body.userName,
             password: req.body.password
         }}).then(user => {
             if(user != null) {
                 let id
                 res.clearCookie('session')
-                db.Logins.findOne({where: {email: req.body.email}}).then(user => {
+                db.Logins.findOne({where: {userName: req.body.userName}}).then(user => {
                     console.log(user.id)
                     id = user.id
                     res.cookie('session', id)
@@ -59,16 +64,16 @@ const cookieParser = require('cookie-parser')
                 })
                 
             } else {
-                res.render('login')
+                res.redirect('login')
             }
-        })
+        }).catch(err => {console.log('ERROR: ', err)})
 
         
     })
 
     app.post('/createAccount', (req, res) => {
         let exists
-        db.Logins.findOne({where: {email: req.body.email}}).then(x => {
+        db.Logins.findOne({where: {userName: req.body.userName}}).then(x => {
             console.log('VARIABLE--> ', x)
             if(x === null){
                 exists = false
@@ -85,11 +90,11 @@ const cookieParser = require('cookie-parser')
         
         db.Logins.findOrCreate({
             where: {
-                email: req.body.email
+                userName: req.body.userName
             },
             defaults: {
                 name: req.body.name,
-                email: req.body.email,
+                userName: req.body.userName,
                 password: req.body.password
             }
         })
@@ -131,18 +136,18 @@ const cookieParser = require('cookie-parser')
     app.post('/add', (req, res) => {
         let sessionID = req.cookies.session
         let sessionName
-        let sessionMail
+        let sessionUsername
         db.Logins.findOne({
             where: {
                 id: sessionID
             }
         }).then(user => {
             sessionName = user.name
-            sessionMail = user.email
+            sessionUsername = user.userName
             db.Posts.create({
                 name: sessionName,
                 contentText: req.body.content,
-                email: sessionMail,
+                userName: sessionUsername,
                 creatorID: sessionID
             })
             res.redirect('/')
@@ -196,13 +201,14 @@ const cookieParser = require('cookie-parser')
         db.Logins.findOne({where: {
             id: req.params.id
         }}).then(user => {
+            console.log(user)
             db.Posts.findAll({
                 where: {
                     creatorID: user.id
                 },
                 order: [['id', 'DESC']]
             }).then(posts => {
-                profileToAcess = {user, posts}
+                profileToAcess = {user, posts, sessionID: req.cookies.session}
                 res.redirect('/profile')
             }).catch((err) => {
                 console.log('=================ERROR: ' + err)
@@ -212,6 +218,47 @@ const cookieParser = require('cookie-parser')
 
     app.get('/profile', (req, res) => {
         res.render('profile', profileToAcess)
+    })
+
+
+
+    //Funções da página de perfil
+
+
+    app.get('/bio', (req, res) => {
+        res.render('bio')
+    })
+
+    app.post('/editBio', (req, res) => {
+        db.Logins.update({bio: req.body.bio}, {
+            where: {id: req.cookies.session}
+        }).then(() => {
+            profileToAcess.user.bio = req.body.bio
+            res.redirect('/profile')
+        })
+    })
+
+
+    app.get('/editName', (req, res) => {
+        res.render('nome')
+    })
+
+    app.post('/changeName', (req, res) => {
+        db.Logins.update({name: req.body.name}, {
+            where: {id: req.cookies.session}
+        }).then(() => {
+            db.Posts.update({name: req.body.name}, {
+                where: {creatorID: req.cookies.session}
+            }).then(() => {
+                profileToAcess.user.name = req.body.name
+                res.redirect('/profile')
+            })
+        })
+    })
+
+
+    app.get('/addMail', (req, res) => {
+        res.render('email')
     })
 
 

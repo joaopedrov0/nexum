@@ -1,10 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
+
 const sequelize = new Sequelize('nexumapp', 'nexumuser', 'nexumpass', {
     host: 'db4free.net',
     dialect: 'mysql',
 })
-
 
 
 const Logins = sequelize.define('logins', {
@@ -12,14 +12,25 @@ const Logins = sequelize.define('logins', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
+    userName: {
         type: DataTypes.STRING,
         allowNull: false
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    bio: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    email: {
+        type: DataTypes.STRING
+    },
+    createdAt: {
+        type: DataTypes.DATEONLY,
+        defaultValue: DataTypes.NOW,
+    },
 })
 
 const Posts = sequelize.define('posts', {
@@ -27,7 +38,7 @@ const Posts = sequelize.define('posts', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
+    userName: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -38,7 +49,11 @@ const Posts = sequelize.define('posts', {
     creatorID: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
+    createdAt: {
+        type: DataTypes.DATEONLY,
+        defaultValue: DataTypes.NOW,
+    },
 })
 
 sequelize.sync()

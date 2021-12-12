@@ -8,6 +8,12 @@ html(lang="pt-br")
         link(rel="stylesheet", href="style/base.css")
         link(rel="stylesheet", href="style/form.css")
         link(rel="stylesheet", href="style/btn.css")
+
+        //favicon
+        link(rel="apple-touch-icon", sizes="180x180", href="favicon/apple-touch-icon.png")
+        link(rel="icon", type="image/png", sizes="32x32", href="favicon/favicon-32x32.png")
+        link(rel="icon", type="image/png", sizes="16x16", href="favicon/favicon-16x16.png")
+        link(rel="manifest", href="favicon/nexum.webmanifest")
     body 
         header 
             h1 Nexum
@@ -16,9 +22,9 @@ html(lang="pt-br")
             section(class="full-section")
                 form(action="/createAccount", method="post")
                     h2 Cadastre-se  
-                    input(type="text", name="name", placeholder="Nome de Usuário" required)
+                    input(type="text", name="name", placeholder="Nome" required)
                     input(type="password", name="password", placeholder="Senha" required)
-                    input(type="email", name="email", placeholder="Email" required)
+                    input(type="text", name="userName", placeholder="Username (Esse nome é exclusivamente seu!)" required)
                     button(type="submit") Cadastrar
                     p(style="color: red;")= err 
                 a(href="/login" class="btn-glass") Já tem uma conta? Faça o Login aqui! 

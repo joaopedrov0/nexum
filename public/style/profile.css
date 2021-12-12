@@ -1,19 +1,58 @@
 section{
     width: 100vw;
+    overflow-x: hidden;
 }
 
-h2, h3{
+h2, h3, h4, h5{
     color: white;
     font-weight: 300;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .post{
     max-width: 95vw;
+    min-width: 50vw;
 }
 
 .posts{
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    overflow-y: auto;
+}
+
+.ownerOptions{
+    background-color: #131313;
+    width: 95vw;
+    margin: 20px 0 0 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-radius: 25px;
+
+    padding: 5px;
+    
+    flex-wrap: wrap;
+}
+
+.ownerOptions a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    margin: 0 5px;
+
+    padding: 10px;
+}
+
+.ownerOptions a .material-icons-outlined{
+    font-size: 24px;
+    margin-left: 10px;
 }

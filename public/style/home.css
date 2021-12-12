@@ -68,7 +68,7 @@ menu .actions a:hover{
 .whospost .name{
     margin-right: 20px;
 }
-.whospost .email{
+.whospost .userName{
     font-size: 30px;
     opacity: 50%;
 }
@@ -77,7 +77,7 @@ menu .actions a:hover{
     font-size: 32px;
 }
 
-.email{
+.userName{
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -96,7 +96,7 @@ menu .name{
     max-width: 100%;
 }
 
-menu .email{
+menu .userName{
     font-family: 'Raleway', sans-serif;
     letter-spacing: 1px;
     font-weight: 200;
@@ -105,21 +105,9 @@ menu .email{
     max-width: 100%;
 }
 
-.delete{
-    margin-left: auto;
-    padding: 5px;
-    border-radius: 5px;
-    color: rgba(208, 208, 208, 0.563);
 
-    transition: all 200ms ease-in-out;
-}
 
-.delete:hover{
-    color: white;
-    /*background-color: rgba(255, 255, 255, 0.439);*/
-}
-
-.whospost .email, .whospost .nome{
+.whospost .userName, .whospost .nome{
     overflow-x: auto;
 }
 
@@ -129,9 +117,23 @@ menu .email{
     font-family: 'Raleway', sans-serif;
 }
 
-.whospost a{
+.whospost a, menu a{
     color: white;
     text-decoration: none;
+}
+
+a.delete{
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 5px;
+    color: rgba(208, 208, 208, 0.563);
+
+    transition: all 200ms ease-in-out;
+}
+
+a.delete:hover{
+    color: white;
+    /*background-color: rgba(255, 255, 255, 0.439);*/
 }
 
 @media screen and (max-width: 960px){
@@ -188,7 +190,7 @@ menu .email{
         align-items: center;
     }
 
-    .whospost .name, .whospost .email{
+    .whospost .name, .whospost .userName{
         font-size: 20px;
     }
 

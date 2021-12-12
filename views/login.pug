@@ -8,6 +8,12 @@ html(lang="pt-br")
         link(rel="stylesheet", href="style/base.css")
         link(rel="stylesheet", href="style/form.css")
         link(rel="stylesheet", href="style/btn.css")
+
+        //favicon
+        link(rel="apple-touch-icon", sizes="180x180", href="favicon/apple-touch-icon.png")
+        link(rel="icon", type="image/png", sizes="32x32", href="favicon/favicon-32x32.png")
+        link(rel="icon", type="image/png", sizes="16x16", href="favicon/favicon-16x16.png")
+        link(rel="manifest", href="favicon/nexum.webmanifest")
     body 
         header 
             h1 Nexum
@@ -16,7 +22,7 @@ html(lang="pt-br")
             section(class="full-section")
                 form(action="/connect", method="post")
                     h2 Login
-                    input(type="email", name="email", placeholder="Email de usuário" required)
+                    input(type="text", name="userName", placeholder="Nome de usuário" required)
                     input(type="password", name="password", placeholder="Senha" required)
                     button(type="submit") Login
 

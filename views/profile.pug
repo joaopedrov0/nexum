@@ -10,21 +10,48 @@ html(lang="pt-br")
         link(rel="stylesheet", href="style/home.css")
 
         link(rel="stylesheet", href="style/profile.css")
+
+        //favicon
+        link(rel="apple-touch-icon", sizes="180x180", href="favicon/apple-touch-icon.png")
+        link(rel="icon", type="image/png", sizes="32x32", href="favicon/favicon-32x32.png")
+        link(rel="icon", type="image/png", sizes="16x16", href="favicon/favicon-16x16.png")
+        link(rel="manifest", href="favicon/nexum.webmanifest")
     body 
         a(class="floating-btn" href="/") arrow_back
         header 
                 h1 Nexum
         section 
                 h2(class="name")= user.name
-                h3(class="email")= user.email
+                h3(class="userName")= '@' + user.userName
+                if sessionID == user.id && user.email
+                    h4(class="email")= user.email
+                if user.bio 
+                    h5(class="bio")= user.bio
+                if sessionID == user.id
+                    div(class="ownerOptions")
+                        a(href="/editName") Editar nome
+                                div(class="material-icons-outlined") edit
+                        if !user.bio
+                            a(href="/bio") Adicionar bio
+                                div(class="material-icons-outlined") add
+                        else 
+                            a(href="/bio") Editar bio
+                                div(class="material-icons-outlined") edit
+                        if user.email 
+                            a(href="/editMail") Editar email de recuperação de senha
+                                div(class="material-icons-outlined") edit
+                        else 
+                            a(href="/addMail") Adicionar um email de recuperação de senha
+                                div(class="material-icons-outlined") add
                 div(class="posts")
                     each val in posts
                         div(class="post")
                             div(class="whospost")
                                 p(class="name")= val.name
-                                p(class="email")= val.email 
+                                p(class="userName")= '@' + val.userName 
                                 if sessionID == val.creatorID 
                                     a(href="/deletePost/" + val.id, class="material-icons-outlined delete") delete
                             hr
                             p(class="content")= val.contentText
                             small(class="post-date")= val.createdAt
+        script(src="javascripts/formatDate.js") 
