@@ -3,7 +3,7 @@ menu{
     height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
-    background-color: #5a0c28;
+    background-color: #283593;
     align-items: center;
     justify-content: space-between;
 }
@@ -18,7 +18,7 @@ menu .actions a{
     font-family: 'Source Sans Pro', sans-serif;
     width: 90%;
     height: 50px;
-    background-color: #7e0d41;
+    background-color: #303f9f;
     margin: 5px 0;
     border-radius: 2px;
     align-items: center;

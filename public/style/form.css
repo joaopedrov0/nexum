@@ -94,7 +94,7 @@ input::placeholder, textarea::placeholder{
 }
 
 .loginBtn:hover, button:hover{
-    background-color: rgba(163, 10, 56, 0.652);
+    background-color: #303f9fa6;
     border-radius: 10px;
     cursor: pointer;
 }

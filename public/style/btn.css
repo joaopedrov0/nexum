@@ -20,7 +20,7 @@
 }
 
 .btn-glass:hover{
-    background-color: rgba(163, 10, 56, 0.652);
+    background-color: #303f9f;
     border-radius: 10px;
     cursor: pointer;
 }
