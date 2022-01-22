@@ -3,10 +3,13 @@ const app = express()
 const pug = require('pug')
 const db = require('./models/db')
 const cookieParser = require('cookie-parser')
+const { cookie } = require('express/lib/response')
+
+app.disable('x-powered-by'); // Recomendação da própria documentação do express
 
 // Testing scripts
-db.Logins.findAll().then(logins => {console.log(logins)})
-db.Posts.findAll().then(posts => {console.log(posts)})
+//db.Logins.findAll().then(logins => {console.log(logins)})
+//db.Posts.findAll().then(posts => {console.log(posts)})
 
 
 // Config
@@ -21,6 +24,8 @@ db.Posts.findAll().then(posts => {console.log(posts)})
         app.set('view engine', 'pug')
 // Rotas
     app.get('/', (req, res) => {
+        console.log(req.cookies)
+        console.log(req.cookies.session)
         if(req.cookies.session == undefined){
             res.redirect('login')
         } else {
@@ -58,7 +63,7 @@ db.Posts.findAll().then(posts => {console.log(posts)})
                 db.Logins.findOne({where: {userName: req.body.userName}}).then(user => {
                     console.log(user.id)
                     id = user.id
-                    res.cookie('session', id)
+                    res.cookie('session', id, {httpOnly: true})
                     console.log('Cookie created: ' + id)
                     res.redirect('/')
                 })
